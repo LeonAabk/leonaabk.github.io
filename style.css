@@ -1,65 +1,67 @@
 /*
- * Premium Tech Startup Design v3.0
- * Den gylne middelvei
+ * Rent og Minimalistisk Hub Design v4.0
+ * Fokus på lesbarhet, innhold og et tidløst uttrykk
  */
 
 :root {
-    /* Fargepalett - Lys modus */
-    --bg-main: #f3f4f6;
-    --card-bg: rgba(255, 255, 255, 0.7);
+    /* Fargepalett - Lys modus (Klassisk og ren) */
+    --bg-main: #f9fafb;
+    --card-bg: #ffffff;
     --text-primary: #111827;
     --text-secondary: #4b5563;
+    --border-color: #e5e7eb;
     
-    /* Gradienter og effekter */
-    --gradient-accent: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-    --card-border: rgba(255, 255, 255, 0.5);
-    --shadow-idle: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    --shadow-hover: 0 20px 25px -5px rgba(99, 102, 241, 0.15), 0 10px 10px -5px rgba(99, 102, 241, 0.05);
+    /* Subtile interaksjonsfarger */
+    --accent-color: #2563eb; /* En klassisk blåfarge i stedet for neon-lilla */
+    --vipps-color: #ff5b24; /* Offisiell Vipps-oransje */
+
+    /* Roligere skygger */
+    --shadow-idle: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
     
-    --transition-speed: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-speed: 0.2s ease-in-out;
 }
 
-/* Automatisk mørk modus */
+/* Automatisk mørk modus (Dempet og behagelig) */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-main: #0f172a; /* Dyp, rik midnattsblå/grå */
-        --card-bg: rgba(30, 41, 59, 0.7);
-        --text-primary: #f8fafc;
-        --text-secondary: #94a3b8;
-        
-        --card-border: rgba(255, 255, 255, 0.05);
-        --shadow-idle: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-        --shadow-hover: 0 20px 25px -5px rgba(168, 85, 247, 0.2), 0 10px 10px -5px rgba(168, 85, 247, 0.1);
+        --bg-main: #111827; /* Ren mørk grå, uten blå/lilla skjær */
+        --card-bg: #1f2937;
+        --text-primary: #f9fafb;
+        --text-secondary: #9ca3af;
+        --border-color: #374151;
+        --accent-color: #60a5fa;
+
+        --shadow-idle: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
     }
 }
 
 /* Base Setup */
 *, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-main);
     color: var(--text-primary);
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    align-items: center;
-    justify-content: center;
     -webkit-font-smoothing: antialiased;
-    
-    /* Legger til et subtilt bakgrunnsmønster for litt mer dybde */
-    background-image: radial-gradient(var(--text-secondary) 0.5px, transparent 0.5px);
-    background-size: 24px 24px;
-    background-position: 0 0;
 }
 
+/* Container */
 .container {
     width: 100%;
-    max-width: 960px;
+    max-width: 900px;
+    margin: 0 auto;
     padding: 4rem 2rem;
+    flex: 1; /* Skyver footeren ned hvis siden er kort */
     display: flex;
     flex-direction: column;
 }
@@ -71,139 +73,106 @@ header {
 }
 
 header h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin: 0 0 1rem 0;
-    /* Gjør overskriften levende med en gradient */
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
 }
 
 header p {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: var(--text-secondary);
-    max-width: 500px;
+    max-width: 550px;
     margin: 0 auto;
-    line-height: 1.6;
 }
 
 /* Grid Layout */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
 }
 
-/* Premium Kort-design (Cards) */
+/* Solide Kort-design (Cards) */
 .card {
     background: var(--card-bg);
-    backdrop-filter: blur(12px); /* Subtil glass-effekt */
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--card-border);
-    border-radius: 24px;
-    padding: 3rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
     text-decoration: none;
     color: inherit;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Venstrestilt innhold ser ofte litt mer seriøst ut */
+    align-items: flex-start;
     box-shadow: var(--shadow-idle);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
-    position: relative;
-    overflow: hidden;
 }
 
-/* En farget glød som ligger skjult bak i kortet */
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gradient-accent);
-    opacity: 0;
-    transition: opacity var(--transition-speed);
-}
-
-/* Hover Interaktivitet */
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-hover);
-    border-color: rgba(168, 85, 247, 0.3);
+    border-color: var(--accent-color);
 }
 
-.card:hover::before {
-    opacity: 1; /* Henter frem fargestripen på toppen */
-}
-
-/* Ikoner */
 .card .icon {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    transition: transform var(--transition-speed);
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
 }
 
-.card:hover .icon {
-    transform: scale(1.1) rotate(-5deg);
-}
-
-/* Kort-tekst */
 .card h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 0 0.75rem 0;
-    letter-spacing: -0.02em;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
 }
 
 .card p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Hovedboksen (Kortet) - MØRKT TEMA */
-.vipps-card-container {
-    background: #1e293b; /* Mørk bakgrunn */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Litt dypere skygge */
-    text-align: center;
-    border: 2px solid #ff5b24; /* Beholder Vipps-rammen */
-    max-width: 800px;
-    margin: 40px auto;
-    font-family: sans-serif;
-}
-
-/* Overskrift */
-.vipps-card-container h2 {
-    color: #f8fafc; /* Hvit tekst */
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-/* Vanlig tekst */
-.vipps-card-container p {
-    color: #cbd5e1; /* Lys grå tekst */
     line-height: 1.5;
 }
 
-/* Layout for QR og tekst */
-.vipps-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    margin-top: 30px;
+/* Vipps Seksjon */
+.vipps-card-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
-/* QR-kode seksjon */
+.vipps-card-container h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.vipps-card-container > p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vipps-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+@media (min-width: 600px) {
+    .vipps-container {
+        flex-direction: row;
+        justify-content: center;
+        gap: 4rem;
+    }
+}
+
 .vipps-qr-section {
     display: flex;
     flex-direction: column;
@@ -211,61 +180,59 @@ header p {
 }
 
 .vipps-qr-img {
-    max-width: 150px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+    width: 140px;
+    height: 140px;
+    background: #ffffff; /* Sikrer at QR-koden alltid har hvit bakgrunn og kan scannes i mørk modus */
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 0.75rem;
 }
 
 .vipps-help-text {
-    font-size: 0.85rem;
-    color: #94a3b8 !important; /* Lysere grå for hjelpeteksten */
-    margin-top: 10px;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
 }
 
-/* Tekst og knapp seksjon */
 .vipps-text-section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.vipps-text-section p {
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
 }
 
 .vipps-number {
-    font-size: 2.8rem;
-    color: #ff5b24; /* Beholder Vipps-oransje her */
-    margin: 5px 0 20px 0;
+    font-size: 2.5rem;
+    font-weight: 700;
     letter-spacing: 2px;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
 }
 
-/* Vipps-knappen */
 .btn-vipps {
-    background-color: #ff5b24;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding: 12px 28px;
-    border-radius: 30px;
+    background-color: var(--vipps-color);
+    color: #ffffff;
     text-decoration: none;
-    display: inline-block;
-    transition: all 0.2s ease-in-out;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px; /* Gir knappen en moderne, pilleformet look */
+    font-weight: 600;
+    transition: opacity var(--transition-speed);
 }
 
 .btn-vipps:hover {
-    background-color: #e04a1a;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(224, 74, 26, 0.4);
-}
-
-.btn-vipps:active {
-    transform: translateY(0);
+    opacity: 0.9;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 5rem;
-    font-size: 0.9rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
     color: var(--text-secondary);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-size: 0.875rem;
 }
