@@ -1,5 +1,5 @@
 import { Project } from '../data/projects';
-import { ArrowUpRight, Info } from 'lucide-react';
+import { ArrowUpRight, Info, Slash } from 'lucide-react';
 
 interface ProjectCardProps {
   project: Project;
@@ -13,8 +13,22 @@ export function ProjectCard({ project, onOpenDetails }: ProjectCardProps) {
     onOpenDetails(project);
   };
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (!project.isActive) {
+      // If inactive, intercept click to show project details modal rather than failing navigation
+      e.preventDefault();
+      onOpenDetails(project);
+    }
+  };
+
   return (
-    <a href={project.url} className="card" title={`Gå til ${project.title}`}>
+    <a
+      href={project.isActive ? project.url : '#'}
+      className={`card ${!project.isActive ? 'card-inactive' : ''}`}
+      onClick={handleCardClick}
+      title={project.isActive ? `Gå til ${project.title}` : `${project.title} (Ikke aktiv)`}
+      aria-disabled={!project.isActive}
+    >
       <div>
         <div className="card-top-row">
           <div className="icon-wrapper" aria-hidden="true">
@@ -30,25 +44,50 @@ export function ProjectCard({ project, onOpenDetails }: ProjectCardProps) {
             >
               <Info size={16} />
             </button>
-            <div className="card-arrow" aria-hidden="true">
-              <ArrowUpRight size={18} />
-            </div>
+            {project.isActive ? (
+              <div className="card-arrow" aria-hidden="true">
+                <ArrowUpRight size={18} />
+              </div>
+            ) : (
+              <div className="card-arrow" style={{ opacity: 0.6 }} aria-hidden="true" title="Ikke aktiv">
+                <Slash size={16} />
+              </div>
+            )}
           </div>
         </div>
 
         <div className="card-content">
-          <div className="card-category-meta">{project.category}</div>
+          <div className="card-category-meta">
+            <span>{project.category}</span>
+            {!project.isActive && (
+              <>
+                <span aria-hidden="true"> · </span>
+                <span className="status-badge-inactive">Ikke aktiv</span>
+              </>
+            )}
+          </div>
           <h2>{project.title}</h2>
           <p>{project.description}</p>
         </div>
       </div>
 
       <div className="card-footer-meta">
-        <span>Gå til applikasjon</span>
-        <span className="card-link-text">
-          <span>Åpne</span>
-          <ArrowUpRight size={14} />
-        </span>
+        {project.isActive ? (
+          <>
+            <span>Gå til applikasjon</span>
+            <span className="card-link-text">
+              <span>Åpne</span>
+              <ArrowUpRight size={14} />
+            </span>
+          </>
+        ) : (
+          <>
+            <span style={{ color: 'var(--text-muted)' }}>Status</span>
+            <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', fontWeight: 600 }}>
+              Ikke aktiv
+            </span>
+          </>
+        )}
       </div>
     </a>
   );

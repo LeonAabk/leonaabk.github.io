@@ -1,6 +1,10 @@
 import { Sparkles } from 'lucide-react';
+import { projects } from '../data/projects';
 
 export function Header() {
+  const activeCount = projects.filter((p) => p.isActive).length;
+  const totalCount = projects.length;
+
   return (
     <header className="hero-header">
       <div className="hero-kicker">
@@ -10,7 +14,7 @@ export function Header() {
       <p>Her har jeg samlet mine web-applikasjoner og prosjekter.</p>
 
       <div className="hero-meta-summary">
-        <span>6 aktive prosjekter</span>
+        <span>{activeCount} av {totalCount} aktive prosjekter</span>
         <span aria-hidden="true">·</span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
           <Sparkles size={14} style={{ color: 'var(--accent-color)' }} />

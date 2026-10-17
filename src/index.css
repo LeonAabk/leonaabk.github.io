@@ -459,6 +459,22 @@ body {
   outline-offset: 3px;
 }
 
+.card-inactive {
+  opacity: 0.8;
+  border-style: dashed;
+}
+
+.card-inactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--text-muted);
+}
+
+.status-badge-inactive {
+  color: #dc2626;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
 .card-top-row {
   display: flex;
   align-items: flex-start;

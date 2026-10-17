@@ -8,6 +8,8 @@ export interface Project {
   detailedDescription: string;
   features: string[];
   url: string;
+  isActive: boolean;
+  statusNote?: string;
 }
 
 export type CategoryFilter = 'Alle' | 'Bedrift & Salg' | 'Verktøy' | 'Hverdag & Utdanning';
@@ -23,6 +25,7 @@ export const projects: Project[] = [
     detailedDescription: 'En komplett webshop og integrasjonsløsning for smarte NFC-kort tilpasset restaurant- og servicebransjen. Gjør det lynraskt for gjester å legge igjen anmeldelser via kontaktløs teknologi, sømløst koblet med MenySync.',
     features: ['Kontaktløs NFC-anmeldelse', 'Sømløs MenySync-kobling', 'Kortadministrasjon for butikk & servering'],
     url: '/NfcReview/',
+    isActive: true,
   },
   {
     id: 'smaksync',
@@ -34,6 +37,7 @@ export const projects: Project[] = [
     detailedDescription: 'Hovedplattformen for serveringssteder som ønsker samlet styring av sine menyer, henvendelser og produktkataloger. Inkluderer moderne administrasjonsgrensesnitt og automatiserte kontaktflyter.',
     features: ['Sanntids menystyring', 'Kontaktskjema & henvendelser', 'Produktkatalog & prisoversikt'],
     url: '/SmakSync/',
+    isActive: true,
   },
   {
     id: 'reiseregning',
@@ -45,6 +49,7 @@ export const projects: Project[] = [
     detailedDescription: 'Et intuitivt verktøy som tar bort hodepinen fra diett, kilometergodtgjørelse og utlegg. Basert på oppdaterte statlige satser med automatisk summering og eksportklart oppsett.',
     features: ['Statens satser for diett & km', 'Automatisk kalkulering', 'Brukervennlig og rask registrering'],
     url: '/reiseregning/',
+    isActive: true,
   },
   {
     id: 'skolekalkulator',
@@ -56,6 +61,7 @@ export const projects: Project[] = [
     detailedDescription: 'Utviklet for elever og studenter som trenger raske og nøyaktige beregninger. Tilbyr både enkle regneoperasjoner, formler og hverdagsberegninger i et ryddig grensesnitt.',
     features: ['Grunnleggende & avanserte formler', 'Formelhistorikk', 'Rask tastaturnavigasjon'],
     url: '/KomplettKalk/',
+    isActive: true,
   },
   {
     id: 'koble',
@@ -64,9 +70,11 @@ export const projects: Project[] = [
     category: 'Hverdag & Samfunn',
     tagline: 'Koble arbeidsgivere til ungdom',
     description: 'Nettside for å koble arbeidsgiver til ungdom. Laget for ungdom, av ungdom',
-    detailedDescription: 'En innovativ møteplass som senker terskelen for unge som søker deltidsjobb eller sommerjobb, og gir lokale bedrifter enkel tilgang til motivert ungdomskraft.',
+    detailedDescription: 'En innovativ møteplass som senker terskelen for unge som søker deltidsjobb eller sommerjobb, og gir lokale bedrifter enkel tilgang til motivert ungdomskraft. Prosjektet er for øyeblikket ikke aktivt.',
     features: ['Tilpasset ungdom under 18', 'Direkte kontakt med arbeidsgivere', 'Enkel profil og søknadsprosess'],
     url: '/Koble/',
+    isActive: false,
+    statusNote: 'Ikke aktiv',
   },
   {
     id: 'oppskriftslista',
@@ -78,5 +86,6 @@ export const projects: Project[] = [
     detailedDescription: 'Den digitale kokeboken du alltid har savnet. Lagre, organiser og søk gjennom dine personlige favorittoppskrifter uten reklame eller forstyrrende elementer.',
     features: ['Ren og reklamefri visning', 'Ingrediensliste og porsjonsjustering', 'Rask kategorisering og søk'],
     url: '/OppskriftsLista/',
+    isActive: true,
   },
 ];
