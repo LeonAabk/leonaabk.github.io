@@ -1,82 +1,18 @@
 <!DOCTYPE html>
 <html lang="no">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mine nettsider</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <div class="container">
-        <header>
-            <h1>Velkommen til mine nettsider</h1>
-            <p>Her har jeg samlet mine web-applikasjoner og prosjekter.</p>
-        </header>
-
-        <main class="grid">
-            <a href="/NfcReview/" class="card">
-                <div class="icon">📈</div>
-                <h2>NfcReview</h2>
-                <p>Webshop for NfcReview cards og Meny kort. Koblet med MenySync</p>
-            </a>
-            
-            <a href="/SmakSync/" class="card">
-                <div class="icon">🔰</div>
-                <h2>SmakSync</h2>
-                <p>Hovedside for MenySync. Resturantadministrasjon, Kontaktskjema og Produkter</p>
-            </a>
-            
-            
-            <a href="/reiseregning/" class="card">
-                <div class="icon">✈️</div>
-                <h2>Reiseregning</h2>
-                <p>Fyll ut og beregn reiseregninger kjapt og enkelt etter gjeldende satser.</p>
-            </a>
-
-            <a href="/KomplettKalk/" class="card">
-                <div class="icon">🧮</div>
-                <h2>Skolekalkulator</h2>
-                <p>Et godt verktøy for å regne ut alt av av matte, og støtter på andre aktuelle beregninger.</p>
-            </a>
-            
-            <a href="/Koble/" class="card">
-                <div class="icon">📲</div>
-                <h2>Koble</h2>
-                <p>Nettside for å koble arbeidsgiver til ungdom. Laget for ungdom, av ungdom</p>
-            </a>
-            
-            <a href="/OppskriftsLista/" class="card">
-                <div class="icon">🍽️</div>
-                <h2>Oppskriftslista</h2>
-                <p>Nettside for å samle alle oppskriftene dine enkelt på ett sted</p>
-            </a>
-        </main>
-        <section class="vipps-card-container">
-    <h2>Støtt nye prosjekter</h2>
-    <p>Vil du bidra til utviklingen av nye funksjoner og prosjekter? Du kan enkelt donere et valgfritt beløp via Vipps!</p>
-    
-    <div class="vipps-container">
-        <div class="vipps-qr-section">
-            <img src="vipps-qr.png" alt="Vipps QR kode for 9834BU" class="vipps-qr-img">
-            <p class="vipps-help-text">Skann koden med kameraet</p>
-        </div>
-        
-        <div class="vipps-text-section">
-            <p>Eller bruk Vipps-nummer:</p>
-            <h3 class="vipps-number">9834BU</h3>
-            
-            <a href="https://qr.vipps.no/box/fe53df96-3a3c-47e3-aa57-6ccfa96a2d96/pay-in" target="_blank" class="btn-vipps">
-                Åpne i Vipps
-            </a>
-        </div>
-    </div>
-</section>
-
-        <footer>
-            <p>&copy; 2026 Laget av Leon Aabak.</p>
-        </footer>
-    </div>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mine nettsider - Leon Aabak</title>
+    <meta name="description" content="Samling av web-applikasjoner og prosjekter laget av Leon Aabak." />
+    <meta property="og:title" content="Mine nettsider - Leon Aabak" />
+    <meta property="og:description" content="Samling av web-applikasjoner og prosjekter laget av Leon Aabak." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

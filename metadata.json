@@ -1,0 +1,8 @@
+{
+  "name": "Mine nettsider",
+  "description": "Samling av web-applikasjoner og prosjekter laget av Leon Aabak.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
