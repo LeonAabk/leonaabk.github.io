@@ -40,6 +40,7 @@ export function Navbar() {
         <div className="nav-links">
           <a href="#prosjekter" className="nav-link">Prosjekter</a>
           <a href="#vipps" className="nav-link">Støtt med Vipps</a>
+          <a href="#kontakt" className="nav-link">Kontakt</a>
         </div>
 
         {/* Zone 3: Actions */}

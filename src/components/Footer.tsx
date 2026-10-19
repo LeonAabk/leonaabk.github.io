@@ -13,6 +13,8 @@ export function Footer() {
         <span aria-hidden="true">·</span>
         <a href="#vipps" className="footer-link">Vipps-støtte</a>
         <span aria-hidden="true">·</span>
+        <a href="#kontakt" className="footer-link">Kontakt</a>
+        <span aria-hidden="true">·</span>
         <button
           type="button"
           onClick={scrollToTop}

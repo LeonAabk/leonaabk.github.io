@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Header } from './components/Header';
 import { ProjectGrid } from './components/ProjectGrid';
 import { VippsSection } from './components/VippsSection';
+import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ProjectModal } from './components/ProjectModal';
 import { projects, Project } from './data/projects';
@@ -22,6 +23,7 @@ export default function App() {
           onOpenDetails={(project) => setModalProject(project)}
         />
         <VippsSection />
+        <ContactSection />
         <Footer />
       </div>
 
