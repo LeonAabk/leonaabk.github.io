@@ -28,6 +28,18 @@ export const projects: Project[] = [
     isActive: true,
   },
   {
+    id: 'review-redirect',
+    title: 'ReviewRedirect',
+    icon: '⭐',
+    category: 'Bedrift & Salg',
+    tagline: 'Smart viderekobling for kundeanmeldelser og NFC',
+    description: 'Viderekobling for kundeanmeldelser. Ruter kunder direkte til anmeldelsessiden via NFC eller QR.',
+    detailedDescription: 'En dedikert omdirigeringstjeneste designet for NFC-kort og QR-koder. Sørger for at kunder lynraskt sendes videre til Google Reviews, Trustpilot eller andre anmeldelsesplattformer for enkel og effektiv innsamling av omtaler.',
+    features: ['Optimalisert for NFC-brikker og QR-koder', 'Direkte ruting til Google Reviews og plattformer', 'Lynrask lastetid og enkel ruting'],
+    url: '/ReviewRedirect/',
+    isActive: true,
+  },
+  {
     id: 'smaksync',
     title: 'SmakSync',
     icon: '🔰',

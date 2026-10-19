@@ -13,7 +13,7 @@ export function ProjectGrid({ projects, onOpenDetails }: ProjectGridProps) {
   const [selectedFilter, setSelectedFilter] = useState<CategoryFilter>('Alle');
 
   const filterTabs: { label: string; value: CategoryFilter }[] = [
-    { label: 'Alle (6)', value: 'Alle' },
+    { label: `Alle (${projects.length})`, value: 'Alle' },
     { label: 'Bedrift & Salg', value: 'Bedrift & Salg' },
     { label: 'Verktøy', value: 'Verktøy' },
     { label: 'Hverdag & Utdanning', value: 'Hverdag & Utdanning' },
