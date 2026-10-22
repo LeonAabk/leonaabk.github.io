@@ -52,6 +52,18 @@ export const projects: Project[] = [
     isActive: true,
   },
   {
+    id: 'railsync',
+    title: 'RailSync',
+    icon: '🚆',
+    category: 'Bedrift & Salg',
+    tagline: 'Jernbanestyring, avviksoppfølging og logistikk',
+    description: 'System for jernbanestyring, togavvik og logistikk. En del av Sync-økosystemet',
+    detailedDescription: 'En effektiv løsning for oversikt over jernbanetrafikk, avviksoppfølging og logistikkstyring. RailSync forenkler koordinering og gir sanntidsoversikt for operatører og brukere.',
+    features: ['Sanntids jernbaneoversikt', 'Avvikshandtering og logistikk', 'Sømløs Sync-integrasjon'],
+    url: '/RailSync/',
+    isActive: true,
+  },
+  {
     id: 'reiseregning',
     title: 'Reiseregning',
     icon: '✈️',
