@@ -1,5 +1,6 @@
 import { Project } from '../data/projects';
-import { ArrowUpRight, Info, Slash } from 'lucide-react';
+import { ArrowUpRight, Info } from 'lucide-react';
+import { ProjectIcon } from './ProjectIcon';
 
 interface ProjectCardProps {
   project: Project;
@@ -15,7 +16,6 @@ export function ProjectCard({ project, onOpenDetails }: ProjectCardProps) {
 
   const handleCardClick = (e: React.MouseEvent) => {
     if (!project.isActive) {
-      // If inactive, intercept click to show project details modal rather than failing navigation
       e.preventDefault();
       onOpenDetails(project);
     }
@@ -26,33 +26,25 @@ export function ProjectCard({ project, onOpenDetails }: ProjectCardProps) {
       href={project.isActive ? project.url : '#'}
       className={`card ${!project.isActive ? 'card-inactive' : ''}`}
       onClick={handleCardClick}
-      title={project.isActive ? `Gå til ${project.title}` : `${project.title} (Ikke aktiv)`}
+      title={project.isActive ? `Åpne ${project.title}` : `${project.title} (${project.statusBadge || 'Satt på pause'})`}
       aria-disabled={!project.isActive}
     >
       <div>
         <div className="card-top-row">
-          <div className="icon-wrapper" aria-hidden="true">
-            {project.icon}
+          <div className="project-icon-box" aria-hidden="true">
+            <ProjectIcon name={project.iconName} size={18} />
           </div>
+
           <div className="card-actions-row">
             <button
               type="button"
               className="card-info-btn"
               onClick={handleInfoClick}
-              title={`Les mer om ${project.title}`}
-              aria-label={`Les mer om ${project.title}`}
+              title={`Detaljer om ${project.title}`}
+              aria-label={`Detaljer om ${project.title}`}
             >
-              <Info size={16} />
+              <Info size={15} strokeWidth={1.8} />
             </button>
-            {project.isActive ? (
-              <div className="card-arrow" aria-hidden="true">
-                <ArrowUpRight size={18} />
-              </div>
-            ) : (
-              <div className="card-arrow" style={{ opacity: 0.6 }} aria-hidden="true" title="Ikke aktiv">
-                <Slash size={16} />
-              </div>
-            )}
           </div>
         </div>
 
@@ -62,11 +54,11 @@ export function ProjectCard({ project, onOpenDetails }: ProjectCardProps) {
             {!project.isActive && (
               <>
                 <span aria-hidden="true"> · </span>
-                <span className="status-badge-inactive">Ikke aktiv</span>
+                <span className="status-badge-inactive">{project.statusBadge || 'Ikke aktiv'}</span>
               </>
             )}
           </div>
-          <h2>{project.title}</h2>
+          <h3>{project.title}</h3>
           <p>{project.description}</p>
         </div>
       </div>
@@ -74,18 +66,16 @@ export function ProjectCard({ project, onOpenDetails }: ProjectCardProps) {
       <div className="card-footer-meta">
         {project.isActive ? (
           <>
-            <span>Gå til applikasjon</span>
+            <span>Webapplikasjon</span>
             <span className="card-link-text">
               <span>Åpne</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={14} strokeWidth={2} />
             </span>
           </>
         ) : (
           <>
-            <span style={{ color: 'var(--text-muted)' }}>Status</span>
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', fontWeight: 600 }}>
-              Ikke aktiv
-            </span>
+            <span>Status</span>
+            <span className="card-paused-text">{project.statusBadge || 'Satt på pause'}</span>
           </>
         )}
       </div>

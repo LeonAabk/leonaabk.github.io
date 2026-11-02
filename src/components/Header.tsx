@@ -1,27 +1,33 @@
-import { Sparkles } from 'lucide-react';
-import { projects } from '../data/projects';
+import { ArrowUpRight } from 'lucide-react';
 
 export function Header() {
-  const activeCount = projects.filter((p) => p.isActive).length;
-  const totalCount = projects.length;
-
   return (
-    <header className="hero-header">
-      <div className="hero-kicker">
-        <span>Web-applikasjoner & Verktøy</span>
-      </div>
-      <h1>Velkommen til mine nettsider</h1>
-      <p>Her har jeg samlet mine web-applikasjoner og prosjekter.</p>
-
-      <div className="hero-meta-summary">
-        <span>{activeCount} av {totalCount} aktive prosjekter</span>
-        <span aria-hidden="true">·</span>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
-          <Sparkles size={14} style={{ color: 'var(--accent-color)' }} />
-          <span>Direkte tilgang</span>
-        </span>
-        <span aria-hidden="true">·</span>
+    <header className="studio-hero">
+      <div className="studio-eyebrow">
+        <span>Aabak Studio</span>
+        <span className="eyebrow-dot" aria-hidden="true" />
         <span>Utviklet av Leon Aabak</span>
+      </div>
+
+      <h1 className="studio-headline">
+        Kontaktløse NFC-løsninger for bedrifter og egne digitale verktøy.
+      </h1>
+
+      <p className="studio-lead">
+        Bestill ferdigprogrammerte Google Review NFC-kort direkte i nettbutikken vår, utforsk kommende systemer for serveringssteder, eller bruk mine åpne webprosjekter nedenfor.
+      </p>
+
+      <div className="studio-hero-actions">
+        <a href="/NfcReview/" className="btn-studio-primary">
+          <span>Åpne nettbutikk</span>
+          <ArrowUpRight size={16} strokeWidth={2} />
+        </a>
+        <a href="#prosjekter" className="btn-studio-secondary">
+          <span>Private prosjekter</span>
+        </a>
+        <a href="#kontakt" className="btn-studio-ghost">
+          <span>Ta kontakt</span>
+        </a>
       </div>
     </header>
   );

@@ -1,31 +1,32 @@
 import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Header } from './components/Header';
+import { WebshopSection } from './components/WebshopSection';
 import { ProjectGrid } from './components/ProjectGrid';
-import { VippsSection } from './components/VippsSection';
 import { ContactSection } from './components/ContactSection';
+import { VippsSection } from './components/VippsSection';
 import { Footer } from './components/Footer';
 import { ProjectModal } from './components/ProjectModal';
-import { projects, Project } from './data/projects';
+import { privateProjects, Project } from './data/projects';
 
 export default function App() {
   const [modalProject, setModalProject] = useState<Project | null>(null);
 
   return (
     <>
-      <div className="ambient-bg" aria-hidden="true" />
       <Navbar />
 
-      <div className="container">
+      <main className="container">
         <Header />
+        <WebshopSection onOpenDetails={(project) => setModalProject(project)} />
         <ProjectGrid
-          projects={projects}
+          projects={privateProjects}
           onOpenDetails={(project) => setModalProject(project)}
         />
-        <VippsSection />
         <ContactSection />
+        <VippsSection />
         <Footer />
-      </div>
+      </main>
 
       <ProjectModal
         project={modalProject}

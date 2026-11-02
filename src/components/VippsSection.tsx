@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Copy, Check, Heart, ExternalLink, QrCode } from 'lucide-react';
+import { Copy, Check, ExternalLink, QrCode } from 'lucide-react';
 
 export function VippsSection() {
   const [copied, setCopied] = useState(false);
@@ -8,52 +8,95 @@ export function VippsSection() {
 
   const vippsNumber = '9834BU';
   const vippsPaymentUrl = 'https://qr.vipps.no/box/fe53df96-3a3c-47e3-aa57-6ccfa96a2d96/pay-in';
-  const presets = ['50 kr', '100 kr', '200 kr', '500 kr', 'Valgfritt'];
+  const presets = ['50 kr', '100 kr', '200 kr', 'Valgfritt'];
 
   const handleCopyNumber = () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      navigator.clipboard.writeText(vippsNumber).then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2200);
-      }).catch(() => {
-        // fallback
-      });
+      navigator.clipboard
+        .writeText(vippsNumber)
+        .then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2200);
+        })
+        .catch(() => {});
     }
   };
 
   return (
-    <section id="vipps" className="vipps-card-container" aria-labelledby="vipps-title">
-      <div className="vipps-badge-title">
-        <Heart size={20} style={{ color: 'var(--vipps-color)' }} fill="currentColor" />
-        <h2 id="vipps-title">Støtt nye prosjekter</h2>
-      </div>
-      <p>
-        Vil du bidra til utviklingen av nye funksjoner og prosjekter? Du kan enkelt
-        donere et valgfritt beløp via Vipps!
-      </p>
-
-      {/* Preset Amount Selector */}
-      <div className="vipps-presets-wrapper">
-        <div className="vipps-presets-label">Velg et støttebeløp</div>
-        <div className="vipps-presets-group" role="radiogroup" aria-label="Velg støttebeløp">
-          {presets.map((preset) => (
-            <button
-              key={preset}
-              type="button"
-              role="radio"
-              aria-checked={selectedPreset === preset}
-              className={`vipps-preset-btn ${selectedPreset === preset ? 'selected' : ''}`}
-              onClick={() => setSelectedPreset(preset)}
-            >
-              {preset}
-            </button>
-          ))}
+    <section id="vipps" className="page-section" aria-labelledby="vipps-title">
+      <div className="section-header-row">
+        <div className="section-title-group">
+          <span className="section-index">04</span>
+          <div>
+            <h2 id="vipps-title" className="section-heading">Støtt med Vipps</h2>
+            <p className="section-subtitle">
+              Frivillig bidrag til videre utvikling og drift av de åpne verktøyene på siden.
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="vipps-container">
-        {/* QR Section */}
-        <div className="vipps-qr-section">
+      <div className="vipps-split-panel">
+        <div className="vipps-content-col">
+          <h3 className="panel-heading">Bidra til nye verktøy og oppdateringer</h3>
+          <p className="panel-body-text">
+            De private verktøyene på denne siden er åpne, gratis og uten reklame. Hvis du har hatt nytte av et verktøy og ønsker å støtte videre arbeid, kan du sende et valgfritt beløp på Vipps.
+          </p>
+
+          <div className="vipps-presets-block">
+            <span className="vipps-small-label">Forslag til beløp</span>
+            <div className="vipps-presets-group" role="radiogroup" aria-label="Velg støttebeløp">
+              {presets.map((preset) => (
+                <button
+                  key={preset}
+                  type="button"
+                  role="radio"
+                  aria-checked={selectedPreset === preset}
+                  className={`vipps-preset-btn ${selectedPreset === preset ? 'selected' : ''}`}
+                  onClick={() => setSelectedPreset(preset)}
+                >
+                  {preset}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="vipps-actions-row">
+            <a
+              href={vippsPaymentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-vipps"
+            >
+              <span>Åpne i Vipps</span>
+              <ExternalLink size={15} strokeWidth={2} />
+            </a>
+
+            <button
+              type="button"
+              className="vipps-code-pill"
+              onClick={handleCopyNumber}
+              title="Klikk for å kopiere Vipps-nummer"
+              aria-label={`Kopier Vipps-nummer ${vippsNumber}`}
+            >
+              <span className="vipps-code-prefix">Vipps #</span>
+              <span className="vipps-code-value">{vippsNumber}</span>
+              {copied ? (
+                <Check size={15} strokeWidth={2.2} style={{ color: '#15803d' }} />
+              ) : (
+                <Copy size={14} strokeWidth={1.8} />
+              )}
+            </button>
+          </div>
+
+          {copied && (
+            <p className="vipps-copied-feedback">
+              Vipps-nummer {vippsNumber} er kopiert til utklippstavlen.
+            </p>
+          )}
+        </div>
+
+        <div className="vipps-qr-col">
           <div
             className="vipps-qr-box"
             onClick={() => setShowQrZoom(!showQrZoom)}
@@ -69,65 +112,20 @@ export function VippsSection() {
           >
             <img
               src="/vipps-qr.png"
-              alt="Vipps QR kode for 9834BU"
+              alt="Vipps QR-kode for 9834BU"
               className="vipps-qr-img"
               style={{
-                transform: showQrZoom ? 'scale(1.3)' : 'scale(1)',
-                transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                transform: showQrZoom ? 'scale(1.22)' : 'scale(1)',
+                transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
-              width={140}
-              height={140}
+              width={136}
+              height={136}
             />
           </div>
           <p className="vipps-help-text">
-            <QrCode size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
-            Skann koden med kameraet
+            <QrCode size={13} style={{ display: 'inline', verticalAlign: '-2px', marginRight: '5px' }} />
+            Skann med kamera eller Vipps
           </p>
-        </div>
-
-        {/* Text and Copy Section */}
-        <div className="vipps-text-section">
-          <p>Eller bruk Vipps-nummer:</p>
-          
-          <button
-            type="button"
-            className="vipps-copy-trigger"
-            onClick={handleCopyNumber}
-            title="Klikk for å kopiere Vipps-nummer"
-            aria-label={`Kopier Vipps-nummer ${vippsNumber}`}
-          >
-            <span className="vipps-number">{vippsNumber}</span>
-            <span className="vipps-copy-icon">
-              {copied ? <Check size={22} style={{ color: '#16a34a' }} /> : <Copy size={20} />}
-            </span>
-          </button>
-
-          {copied && (
-            <p
-              style={{
-                fontSize: '0.85rem',
-                color: '#16a34a',
-                marginTop: '-1rem',
-                marginBottom: '1.25rem',
-                fontWeight: 600,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-              }}
-            >
-              <Check size={14} /> Kopiert til utklippstavlen!
-            </p>
-          )}
-
-          <a
-            href={vippsPaymentUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-vipps"
-          >
-            <span>Åpne i Vipps</span>
-            <ExternalLink size={16} />
-          </a>
         </div>
       </div>
     </section>

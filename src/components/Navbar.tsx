@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Sun, Moon, Heart } from 'lucide-react';
+import { Sun, Moon, ArrowUpRight } from 'lucide-react';
 
 export function Navbar() {
   const [theme, setTheme] = useState<'system' | 'light' | 'dark'>('system');
@@ -30,34 +30,33 @@ export function Navbar() {
   return (
     <nav className="top-navbar" aria-label="Hovednavigasjon">
       <div className="top-navbar-inner">
-        {/* Zone 1: Brand wordmark */}
         <a href="/" className="brand-wordmark">
-          <span>Leon Aabak</span>
-          <span className="brand-badge">Prosjekter</span>
+          <span className="brand-primary">Aabak Studio</span>
+          <span className="brand-divider" aria-hidden="true">/</span>
+          <span className="brand-secondary">Leon Aabak</span>
         </a>
 
-        {/* Zone 2: Navigation Links */}
         <div className="nav-links">
-          <a href="#prosjekter" className="nav-link">Prosjekter</a>
-          <a href="#vipps" className="nav-link">Støtt med Vipps</a>
+          <a href="#nettbutikk" className="nav-link">Nettbutikk</a>
+          <a href="#prosjekter" className="nav-link">Private prosjekter</a>
           <a href="#kontakt" className="nav-link">Kontakt</a>
+          <a href="#vipps" className="nav-link">Støtt med Vipps</a>
         </div>
 
-        {/* Zone 3: Actions */}
         <div className="top-actions">
           <button
             type="button"
             onClick={toggleTheme}
             className="btn-theme-toggle"
             title={`Tema: ${theme === 'light' ? 'Lyst' : theme === 'dark' ? 'Mørkt' : 'System'}. Klikk for å bytte.`}
-            aria-label="Bytt tema"
+            aria-label="Bytt fargetema"
           >
-            {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
+            {theme === 'dark' ? <Moon size={16} strokeWidth={1.75} /> : <Sun size={16} strokeWidth={1.75} />}
           </button>
 
-          <a href="#vipps" className="btn-nav-support">
-            <Heart size={14} fill="currentColor" />
-            <span>Vipps</span>
+          <a href="/NfcReview/" className="btn-nav-shop">
+            <span>Nettbutikk</span>
+            <ArrowUpRight size={15} strokeWidth={2} />
           </a>
         </div>
       </div>

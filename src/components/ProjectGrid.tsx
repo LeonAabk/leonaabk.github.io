@@ -14,24 +14,20 @@ export function ProjectGrid({ projects, onOpenDetails }: ProjectGridProps) {
 
   const filterTabs: { label: string; value: CategoryFilter }[] = [
     { label: `Alle (${projects.length})`, value: 'Alle' },
-    { label: 'Bedrift & Salg', value: 'Bedrift & Salg' },
-    { label: 'Verktøy', value: 'Verktøy' },
-    { label: 'Hverdag & Utdanning', value: 'Hverdag & Utdanning' },
+    { label: 'Verktøy & Skole', value: 'Verktøy & Skole' },
+    { label: 'Hverdag & Fritid', value: 'Hverdag & Fritid' },
   ];
 
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
-      // Category match
       let matchesCategory = true;
-      if (selectedFilter === 'Bedrift & Salg') {
-        matchesCategory = project.category === 'Bedrift & Salg';
-      } else if (selectedFilter === 'Verktøy') {
-        matchesCategory = project.category === 'Verktøy';
-      } else if (selectedFilter === 'Hverdag & Utdanning') {
-        matchesCategory = project.category === 'Hverdag & Samfunn' || project.category === 'Utdanning';
+      if (selectedFilter === 'Verktøy & Skole') {
+        matchesCategory =
+          project.category === 'Verktøy' || project.category === 'Skole & Utdanning';
+      } else if (selectedFilter === 'Hverdag & Fritid') {
+        matchesCategory = project.category === 'Hverdag & Fritid';
       }
 
-      // Search match
       const query = searchQuery.trim().toLowerCase();
       const matchesSearch =
         query === '' ||
@@ -45,11 +41,21 @@ export function ProjectGrid({ projects, onOpenDetails }: ProjectGridProps) {
   }, [projects, selectedFilter, searchQuery]);
 
   return (
-    <section id="prosjekter" aria-label="Prosjektoversikt">
-      {/* Interactive Toolbar */}
+    <section id="prosjekter" className="page-section" aria-labelledby="prosjekter-heading">
+      <div className="section-header-row">
+        <div className="section-title-group">
+          <span className="section-index">02</span>
+          <div>
+            <h2 id="prosjekter-heading" className="section-heading">Private prosjekter</h2>
+            <p className="section-subtitle">
+              Egne webapplikasjoner, kalkulatorer og hverdagsverktøy — åpne og uten reklame.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="toolbar-container">
-        {/* Filter Tabs */}
-        <div className="filter-tabs" role="tablist" aria-label="Filtrer prosjekter etter kategori">
+        <div className="filter-tabs" role="tablist" aria-label="Filtrer private prosjekter">
           {filterTabs.map((tab) => (
             <button
               key={tab.value}
@@ -64,16 +70,15 @@ export function ProjectGrid({ projects, onOpenDetails }: ProjectGridProps) {
           ))}
         </div>
 
-        {/* Live Search Bar */}
         <div className="search-input-wrapper">
-          <Search size={16} className="search-icon" aria-hidden="true" />
+          <Search size={15} className="search-icon" aria-hidden="true" />
           <input
             type="text"
             className="search-input"
             placeholder="Søk i prosjekter..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            aria-label="Søk i prosjekter"
+            aria-label="Søk i private prosjekter"
           />
           {searchQuery && (
             <button
@@ -89,8 +94,7 @@ export function ProjectGrid({ projects, onOpenDetails }: ProjectGridProps) {
         </div>
       </div>
 
-      {/* Grid of Projects */}
-      <main className="grid" aria-label="Prosjekter">
+      <div className="grid" role="list" aria-label="Private prosjekter">
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project) => (
             <ProjectCard
@@ -101,20 +105,20 @@ export function ProjectGrid({ projects, onOpenDetails }: ProjectGridProps) {
           ))
         ) : (
           <div className="empty-state">
-            <p>Ingen prosjekter samsvarte med «{searchQuery}»</p>
+            <p>Ingen prosjekter matchet «{searchQuery}».</p>
             <button
               type="button"
-              className="empty-state-reset-btn"
+              className="btn-studio-secondary"
               onClick={() => {
                 setSearchQuery('');
                 setSelectedFilter('Alle');
               }}
             >
-              Nullstill søk og filter
+              Nullstill filter
             </button>
           </div>
         )}
-      </main>
+      </div>
     </section>
   );
 }

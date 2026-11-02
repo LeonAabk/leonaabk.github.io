@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, Copy, Check, MessageSquare } from 'lucide-react';
+import { Mail, Phone, Copy, Check, ArrowUpRight } from 'lucide-react';
 
 export function ContactSection() {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -24,74 +24,91 @@ export function ContactSection() {
   };
 
   return (
-    <section id="kontakt" className="contact-card-container" aria-labelledby="contact-title">
-      <div className="contact-badge-title">
-        <MessageSquare size={20} style={{ color: 'var(--accent-color)' }} />
-        <h2 id="contact-title">Kontakt meg</h2>
-      </div>
-      <p>
-        Har du spørsmål, ønsker samarbeid eller vil diskutere et prosjekt?
-        Ta gjerne kontakt via e-post eller telefon!
-      </p>
-
-      <div className="contact-grid">
-        {/* Email Card */}
-        <div className="contact-item-card">
-          <div className="contact-item-header">
-            <div className="contact-icon-wrapper" aria-hidden="true">
-              <Mail size={22} />
-            </div>
-            <div>
-              <span className="contact-item-label">E-post</span>
-              <a href={`mailto:${email}`} className="contact-item-value" title={`Send e-post til ${email}`}>
-                {email}
-              </a>
-            </div>
-          </div>
-          <div className="contact-actions-row">
-            <a href={`mailto:${email}`} className="btn-contact-action">
-              <span>Send e-post</span>
-            </a>
-            <button
-              type="button"
-              className="btn-contact-copy"
-              onClick={() => copyToClipboard(email, 'email')}
-              title="Kopier e-postadresse"
-              aria-label="Kopier e-postadresse"
-            >
-              {copiedEmail ? <Check size={16} style={{ color: '#16a34a' }} /> : <Copy size={16} />}
-              <span>{copiedEmail ? 'Kopiert!' : 'Kopier'}</span>
-            </button>
+    <section id="kontakt" className="page-section" aria-labelledby="contact-title">
+      <div className="section-header-row">
+        <div className="section-title-group">
+          <span className="section-index">03</span>
+          <div>
+            <h2 id="contact-title" className="section-heading">Kontakt meg</h2>
+            <p className="section-subtitle">
+              Spørsmål om NFC-kort til bedriften din, samarbeid eller tilbakemeldinger på et prosjekt.
+            </p>
           </div>
         </div>
+      </div>
 
-        {/* Phone Card */}
-        <div className="contact-item-card">
-          <div className="contact-item-header">
-            <div className="contact-icon-wrapper" aria-hidden="true">
-              <Phone size={22} />
+      <div className="contact-split-panel">
+        <div className="contact-intro-col">
+          <h3 className="panel-heading">Ta direkte kontakt</h3>
+          <p className="panel-body-text">
+            Enten du lurer på noe før en bestilling i nettbutikken, ønsker å høre mer om kommende bedriftsløsninger eller bare vil slå av en prat om et prosjekt, svarer jeg raskt på både e-post og telefon.
+          </p>
+          <p className="contact-signature">
+            Leon Aabak · Aabak Studio
+          </p>
+        </div>
+
+        <div className="contact-methods-col">
+          {/* Email Row */}
+          <div className="contact-row-card">
+            <div className="contact-row-main">
+              <div className="project-icon-box" aria-hidden="true">
+                <Mail size={18} strokeWidth={1.75} />
+              </div>
+              <div>
+                <span className="contact-item-label">E-post</span>
+                <a href={`mailto:${email}`} className="contact-item-value">
+                  {email}
+                </a>
+              </div>
             </div>
-            <div>
-              <span className="contact-item-label">Telefon</span>
-              <a href={`tel:${phone}`} className="contact-item-value" title={`Ring ${formattedPhone}`}>
-                {formattedPhone}
+
+            <div className="contact-row-actions">
+              <button
+                type="button"
+                className="btn-inline-copy"
+                onClick={() => copyToClipboard(email, 'email')}
+                aria-label="Kopier e-postadresse"
+              >
+                {copiedEmail ? <Check size={14} strokeWidth={2.2} /> : <Copy size={14} strokeWidth={1.8} />}
+                <span>{copiedEmail ? 'Kopiert' : 'Kopier'}</span>
+              </button>
+              <a href={`mailto:${email}`} className="btn-inline-primary">
+                <span>Send e-post</span>
+                <ArrowUpRight size={14} strokeWidth={2} />
               </a>
             </div>
           </div>
-          <div className="contact-actions-row">
-            <a href={`tel:${phone}`} className="btn-contact-action">
-              <span>Ring meg</span>
-            </a>
-            <button
-              type="button"
-              className="btn-contact-copy"
-              onClick={() => copyToClipboard(phone, 'phone')}
-              title="Kopier telefonnummer"
-              aria-label="Kopier telefonnummer"
-            >
-              {copiedPhone ? <Check size={16} style={{ color: '#16a34a' }} /> : <Copy size={16} />}
-              <span>{copiedPhone ? 'Kopiert!' : 'Kopier'}</span>
-            </button>
+
+          {/* Phone Row */}
+          <div className="contact-row-card">
+            <div className="contact-row-main">
+              <div className="project-icon-box" aria-hidden="true">
+                <Phone size={18} strokeWidth={1.75} />
+              </div>
+              <div>
+                <span className="contact-item-label">Telefon</span>
+                <a href={`tel:${phone}`} className="contact-item-value">
+                  {formattedPhone}
+                </a>
+              </div>
+            </div>
+
+            <div className="contact-row-actions">
+              <button
+                type="button"
+                className="btn-inline-copy"
+                onClick={() => copyToClipboard(phone, 'phone')}
+                aria-label="Kopier telefonnummer"
+              >
+                {copiedPhone ? <Check size={14} strokeWidth={2.2} /> : <Copy size={14} strokeWidth={1.8} />}
+                <span>{copiedPhone ? 'Kopiert' : 'Kopier'}</span>
+              </button>
+              <a href={`tel:${phone}`} className="btn-inline-primary">
+                <span>Ring</span>
+                <ArrowUpRight size={14} strokeWidth={2} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

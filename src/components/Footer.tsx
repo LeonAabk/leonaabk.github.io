@@ -6,23 +6,25 @@ export function Footer() {
   };
 
   return (
-    <footer>
-      <p>&copy; 2026 Laget av Leon Aabak.</p>
+    <footer className="site-footer">
+      <div className="footer-left">
+        <span className="footer-brand">Aabak Studio</span>
+        <span className="footer-sep" aria-hidden="true">·</span>
+        <span>&copy; {new Date().getFullYear()} Leon Aabak</span>
+      </div>
+
       <div className="footer-links">
+        <a href="#nettbutikk" className="footer-link">Nettbutikk</a>
         <a href="#prosjekter" className="footer-link">Prosjekter</a>
-        <span aria-hidden="true">·</span>
-        <a href="#vipps" className="footer-link">Vipps-støtte</a>
-        <span aria-hidden="true">·</span>
         <a href="#kontakt" className="footer-link">Kontakt</a>
-        <span aria-hidden="true">·</span>
+        <a href="#vipps" className="footer-link">Vipps</a>
         <button
           type="button"
           onClick={scrollToTop}
-          className="footer-link"
-          style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+          className="footer-top-btn"
         >
           <span>Til toppen</span>
-          <ArrowUp size={12} />
+          <ArrowUp size={13} strokeWidth={2} />
         </button>
       </div>
     </footer>
