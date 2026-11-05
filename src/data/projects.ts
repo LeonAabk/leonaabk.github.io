@@ -40,7 +40,7 @@ export const businessProjects: Project[] = [
     description:
       'Flate, ferdigprogrammerte NFC-kort som festes rett ved kassen eller på disken. Kunden holder mobilen inntil kortet og kommer rett til bedriftens anmeldelsesside på Google.',
     detailedDescription:
-      'Nettbutikk drevet som registrert ungdomsbedrift (NFC Review UB). Kortene leveres ferdig programmert mot bedriftens Google-profil, har ripebestandig overflate og kraftig 3M-monteringsfilm på baksiden. Engangskjøp uten abonnement eller månedlige gebyrer.',
+      'Nettbutikk drevet av Aabakstudio Ungdomsbedrift (Org.nr: 938 823 014). Kortene leveres ferdig programmert mot bedriftens Google-profil, har ripebestandig overflate og kraftig 3M-monteringsfilm på baksiden. Engangskjøp uten abonnement eller månedlige gebyrer.',
     features: [
       'Flate NFC-kort med 3M-feste på baksiden',
       '399 kr (1 stk) · 990 kr (3-pk m/ fri frakt) · 1 490 kr (5-pk m/ fri frakt)',
@@ -49,7 +49,7 @@ export const businessProjects: Project[] = [
     url: '/NfcReview/',
     ctaLabel: 'Åpne nettbutikken',
     isActive: true,
-    statusBadge: 'Tilgjengelig nå · NFC Review UB',
+    statusBadge: 'Tilgjengelig nå · Aabakstudio UB',
     statusTone: 'available',
   },
   {

@@ -22,7 +22,7 @@ export function WebshopSection({ onOpenDetails }: WebshopSectionProps) {
             </p>
           </div>
         </div>
-        <span className="section-meta-label">NFC Review UB</span>
+        <span className="section-meta-label">Aabakstudio UB · Org.nr: 938 823 014</span>
       </div>
 
       {/* Featured Webshop Showcase */}

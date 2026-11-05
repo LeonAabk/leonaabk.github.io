@@ -10,6 +10,8 @@ export function Footer() {
       <div className="footer-left">
         <span className="footer-brand">Aabak Studio</span>
         <span className="footer-sep" aria-hidden="true">·</span>
+        <span>Aabakstudio Ungdomsbedrift (Org.nr: 938 823 014)</span>
+        <span className="footer-sep" aria-hidden="true">·</span>
         <span>&copy; {new Date().getFullYear()} Leon Aabak</span>
       </div>
 
