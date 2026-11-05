@@ -62,15 +62,15 @@ export function WebshopSection({ onOpenDetails }: WebshopSectionProps) {
           <div className="webshop-pricing-strip" aria-label="Prisoversikt">
             <div className="pricing-tier">
               <span className="pricing-tier-label">Enkeltkort (1 stk.)</span>
-              <span className="pricing-tier-value">399 kr</span>
+              <span className="pricing-tier-value">349 kr</span>
             </div>
             <div className="pricing-tier pricing-tier-featured">
               <span className="pricing-tier-label">Synlighetspakken (3 stk.)</span>
-              <span className="pricing-tier-value">990 kr <small>· Fri frakt</small></span>
+              <span className="pricing-tier-value">890 kr <small>· Fri frakt</small></span>
             </div>
             <div className="pricing-tier">
               <span className="pricing-tier-label">Bedriftspakke (5 stk.)</span>
-              <span className="pricing-tier-value">1 490 kr <small>· Fri frakt</small></span>
+              <span className="pricing-tier-value">1 290 kr <small>· Fri frakt</small></span>
             </div>
           </div>
 

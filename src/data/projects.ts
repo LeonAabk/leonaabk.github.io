@@ -43,7 +43,7 @@ export const businessProjects: Project[] = [
       'Nettbutikk drevet av Aabakstudio Ungdomsbedrift (Org.nr: 938 823 014). Kortene leveres ferdig programmert mot bedriftens Google-profil, har ripebestandig overflate og kraftig 3M-monteringsfilm på baksiden. Engangskjøp uten abonnement eller månedlige gebyrer.',
     features: [
       'Flate NFC-kort med 3M-feste på baksiden',
-      '399 kr (1 stk) · 990 kr (3-pk m/ fri frakt) · 1 490 kr (5-pk m/ fri frakt)',
+      '349 kr (1 stk) · 890 kr (3-pk m/ fri frakt) · 1 290 kr (5-pk m/ fri frakt)',
       'Alle priser inkl. mva. og 0 kr i månedsgebyr',
     ],
     url: '/NfcReview/',
