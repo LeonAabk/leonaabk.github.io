@@ -2427,10 +2427,10 @@ canvas {
 }
 .theme-motif {
   position: absolute;
-  right: 0;
+  right: 3.6rem;
   top: 0;
   height: 100%;
-  width: min(62%, 240px);
+  width: min(55%, 210px);
   color: var(--accent);
   opacity: 0.32;
   pointer-events: none;
@@ -2444,7 +2444,7 @@ canvas {
   color: var(--accent);
 }
 .themed .card-info-btn {
-  background: color-mix(in srgb, var(--bg-surface) 80%, transparent);
+  background: var(--bg-surface);
 }
 .themed:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--border-color)); }
 .themed .card-link-text,
