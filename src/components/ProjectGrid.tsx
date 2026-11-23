@@ -44,9 +44,9 @@ export function ProjectGrid({ projects, onOpenDetails }: ProjectGridProps) {
     <section id="prosjekter" className="page-section" aria-labelledby="prosjekter-heading">
       <div className="section-header-row">
         <div className="section-title-group">
-          <span className="section-index">02</span>
+          <span className="section-index">01</span>
           <div>
-            <h2 id="prosjekter-heading" className="section-heading">Private prosjekter</h2>
+            <h2 id="prosjekter-heading" className="section-heading">Prosjekter</h2>
             <p className="section-subtitle">
               Egne webapplikasjoner, kalkulatorer og hverdagsverktøy — åpne og uten reklame.
             </p>
@@ -55,7 +55,7 @@ export function ProjectGrid({ projects, onOpenDetails }: ProjectGridProps) {
       </div>
 
       <div className="toolbar-container">
-        <div className="filter-tabs" role="tablist" aria-label="Filtrer private prosjekter">
+        <div className="filter-tabs" role="tablist" aria-label="Filtrer prosjekter">
           {filterTabs.map((tab) => (
             <button
               key={tab.value}
@@ -94,7 +94,7 @@ export function ProjectGrid({ projects, onOpenDetails }: ProjectGridProps) {
         </div>
       </div>
 
-      <div className="grid" role="list" aria-label="Private prosjekter">
+      <div className="grid" role="list" aria-label="Prosjekter">
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project) => (
             <ProjectCard

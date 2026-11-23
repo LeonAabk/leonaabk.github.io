@@ -14,11 +14,11 @@ export function WebshopSection({ onOpenDetails }: WebshopSectionProps) {
     <section id="nettbutikk" className="page-section" aria-labelledby="nettbutikk-heading">
       <div className="section-header-row">
         <div className="section-title-group">
-          <span className="section-index">01</span>
+          <span className="section-index">02</span>
           <div>
-            <h2 id="nettbutikk-heading" className="section-heading">Nettbutikk & Bedrift</h2>
+            <h2 id="nettbutikk-heading" className="section-heading">For bedrifter</h2>
             <p className="section-subtitle">
-              Fysiske NFC-kort klare for bestilling i dag, samt tilhørende bedriftsløsninger.
+              NFC-kort for Google-anmeldelser i nettbutikken, og digitale løsninger for serveringssteder.
             </p>
           </div>
         </div>

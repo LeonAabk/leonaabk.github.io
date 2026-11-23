@@ -18,11 +18,11 @@ export default function App() {
 
       <main className="container">
         <Header />
-        <WebshopSection onOpenDetails={(project) => setModalProject(project)} />
         <ProjectGrid
           projects={privateProjects}
           onOpenDetails={(project) => setModalProject(project)}
         />
+        <WebshopSection onOpenDetails={(project) => setModalProject(project)} />
         <ContactSection />
         <VippsSection />
         <Footer />

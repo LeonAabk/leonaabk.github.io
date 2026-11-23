@@ -16,8 +16,8 @@ export function Footer() {
       </div>
 
       <div className="footer-links">
-        <a href="#nettbutikk" className="footer-link">Nettbutikk</a>
         <a href="#prosjekter" className="footer-link">Prosjekter</a>
+        <a href="#nettbutikk" className="footer-link">For bedrifter</a>
         <a href="#kontakt" className="footer-link">Kontakt</a>
         <a href="#vipps" className="footer-link">Vipps</a>
         <button

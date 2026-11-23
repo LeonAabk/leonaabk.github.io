@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Briefcase, LayoutGrid } from 'lucide-react';
 
 export function Header() {
   return (
@@ -10,25 +10,44 @@ export function Header() {
       </div>
 
       <h1 className="studio-headline">
-        Kontaktløse NFC-løsninger for bedrifter og egne digitale verktøy.
+        Digitale verktøy for hverdagen — og løsninger for bedrifter.
       </h1>
 
       <p className="studio-lead">
-        Bestill ferdigprogrammerte Google Review NFC-kort direkte i nettbutikken vår, utforsk kommende systemer for serveringssteder, eller bruk mine åpne webprosjekter nedenfor.
+        Aabak Studio er der jeg lager webapplikasjoner. Her finner du gratis verktøy uten reklame, og produkter for bedrifter som NFC-kort for Google-anmeldelser og digitale menyer.
       </p>
 
-      <div className="studio-hero-actions">
-        <a href="/NfcReview/" className="btn-studio-primary">
-          <span>Åpne nettbutikk</span>
-          <ArrowUpRight size={16} strokeWidth={2} />
+      <div className="hero-paths">
+        <a href="#prosjekter" className="hero-path">
+          <span className="hero-path-icon" aria-hidden="true">
+            <LayoutGrid size={18} strokeWidth={1.8} />
+          </span>
+          <span className="hero-path-body">
+            <span className="hero-path-title">Prosjekter</span>
+            <span className="hero-path-text">
+              RailSync, Reiseregning, Skolekalkulator og flere gratis verktøy.
+            </span>
+          </span>
+          <ArrowRight size={16} strokeWidth={2} className="hero-path-arrow" aria-hidden="true" />
         </a>
-        <a href="#prosjekter" className="btn-studio-secondary">
-          <span>Private prosjekter</span>
-        </a>
-        <a href="#kontakt" className="btn-studio-ghost">
-          <span>Ta kontakt</span>
+
+        <a href="#nettbutikk" className="hero-path">
+          <span className="hero-path-icon" aria-hidden="true">
+            <Briefcase size={18} strokeWidth={1.8} />
+          </span>
+          <span className="hero-path-body">
+            <span className="hero-path-title">For bedrifter</span>
+            <span className="hero-path-text">
+              NFC-kort for Google-anmeldelser, SmakSync og ReviewRedirect.
+            </span>
+          </span>
+          <ArrowRight size={16} strokeWidth={2} className="hero-path-arrow" aria-hidden="true" />
         </a>
       </div>
+
+      <a href="#kontakt" className="hero-contact-link">
+        Spørsmål eller samarbeid? Ta kontakt
+      </a>
     </header>
   );
 }

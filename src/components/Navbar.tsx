@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Sun, Moon, ArrowUpRight, Menu, X } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 
 export function Navbar() {
   const [theme, setTheme] = useState<'system' | 'light' | 'dark'>('system');
@@ -55,8 +55,8 @@ export function Navbar() {
 
         {/* Desktop nav links */}
         <div className="nav-links">
-          <a href="#nettbutikk" className="nav-link">Nettbutikk</a>
-          <a href="#prosjekter" className="nav-link">Private prosjekter</a>
+          <a href="#prosjekter" className="nav-link">Prosjekter</a>
+          <a href="#nettbutikk" className="nav-link">For bedrifter</a>
           <a href="#kontakt" className="nav-link">Kontakt</a>
           <a href="#vipps" className="nav-link">Støtt med Vipps</a>
         </div>
@@ -71,11 +71,6 @@ export function Navbar() {
           >
             {theme === 'dark' ? <Moon size={16} strokeWidth={1.75} /> : <Sun size={16} strokeWidth={1.75} />}
           </button>
-
-          <a href="/NfcReview/" className="btn-nav-shop">
-            <span>Nettbutikk</span>
-            <ArrowUpRight size={15} strokeWidth={2} />
-          </a>
 
           {/* Mobile hamburger toggle */}
           <button
@@ -97,14 +92,14 @@ export function Navbar() {
           <div className="mobile-nav-content">
             <div className="mobile-nav-section-title">Navigasjon</div>
             <div className="mobile-nav-items">
-              <a href="#nettbutikk" className="mobile-nav-item" onClick={handleLinkClick}>
+              <a href="#prosjekter" className="mobile-nav-item" onClick={handleLinkClick}>
                 <span className="mobile-nav-num">01</span>
-                <span className="mobile-nav-text">Nettbutikk & Bedrift</span>
+                <span className="mobile-nav-text">Prosjekter</span>
                 <span className="mobile-nav-arrow" aria-hidden="true">→</span>
               </a>
-              <a href="#prosjekter" className="mobile-nav-item" onClick={handleLinkClick}>
+              <a href="#nettbutikk" className="mobile-nav-item" onClick={handleLinkClick}>
                 <span className="mobile-nav-num">02</span>
-                <span className="mobile-nav-text">Private prosjekter</span>
+                <span className="mobile-nav-text">For bedrifter</span>
                 <span className="mobile-nav-arrow" aria-hidden="true">→</span>
               </a>
               <a href="#kontakt" className="mobile-nav-item" onClick={handleLinkClick}>
@@ -120,10 +115,6 @@ export function Navbar() {
             </div>
 
             <div className="mobile-nav-footer">
-              <a href="/NfcReview/" className="btn-mobile-shop-cta" onClick={handleLinkClick}>
-                <span>Åpne NFC Review Nettbutikk</span>
-                <ArrowUpRight size={16} strokeWidth={2} />
-              </a>
               <div className="mobile-nav-footnote">
                 aabakstudio.com · Leon Aabak
               </div>
