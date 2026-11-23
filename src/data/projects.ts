@@ -8,6 +8,15 @@ export type IconName =
   | 'train'
   | 'briefcase';
 
+export type Motif = 'rails' | 'grid' | 'route' | 'spice' | 'network' | 'menu' | 'redirect' | 'nfc';
+
+/** Prosjektets egen fargetone: accent i lys modus, accentDark i mørk modus. */
+export interface ProjectTheme {
+  accent: string;
+  accentDark: string;
+  motif: Motif;
+}
+
 export type PrivateCategory = 'Verktøy' | 'Skole & Utdanning' | 'Hverdag & Fritid';
 
 export interface Project {
@@ -25,6 +34,7 @@ export interface Project {
   isActive: boolean;
   statusBadge?: string;
   statusTone?: 'available' | 'upcoming' | 'neutral' | 'inactive';
+  theme: ProjectTheme;
 }
 
 export type CategoryFilter = 'Alle' | 'Verktøy & Skole' | 'Hverdag & Fritid';
@@ -32,6 +42,7 @@ export type CategoryFilter = 'Alle' | 'Verktøy & Skole' | 'Hverdag & Fritid';
 export const businessProjects: Project[] = [
   {
     id: 'nfc-review',
+    theme: { accent: '#1a73e8', accentDark: '#8ab4f8', motif: 'nfc' },
     title: 'NFC Review',
     iconName: 'credit-card',
     section: 'business',
@@ -54,6 +65,7 @@ export const businessProjects: Project[] = [
   },
   {
     id: 'smaksync',
+    theme: { accent: '#047857', accentDark: '#6ee7b7', motif: 'menu' },
     title: 'SmakSync',
     iconName: 'utensils',
     section: 'business',
@@ -76,6 +88,7 @@ export const businessProjects: Project[] = [
   },
   {
     id: 'review-redirect',
+    theme: { accent: '#4338ca', accentDark: '#a5b4fc', motif: 'redirect' },
     title: 'ReviewRedirect',
     iconName: 'routing',
     section: 'business',
@@ -101,6 +114,7 @@ export const businessProjects: Project[] = [
 export const privateProjects: Project[] = [
   {
     id: 'reiseregning',
+    theme: { accent: '#be123c', accentDark: '#fda4af', motif: 'route' },
     title: 'Reiseregning',
     iconName: 'plane',
     section: 'private',
@@ -120,6 +134,7 @@ export const privateProjects: Project[] = [
   },
   {
     id: 'skolekalkulator',
+    theme: { accent: '#2563eb', accentDark: '#93c5fd', motif: 'grid' },
     title: 'Skolekalkulator',
     iconName: 'calculator',
     section: 'private',
@@ -139,6 +154,7 @@ export const privateProjects: Project[] = [
   },
   {
     id: 'oppskriftslista',
+    theme: { accent: '#c2410c', accentDark: '#fdba74', motif: 'spice' },
     title: 'Oppskriftslista',
     iconName: 'book-open',
     section: 'private',
@@ -158,6 +174,7 @@ export const privateProjects: Project[] = [
   },
   {
     id: 'railsync',
+    theme: { accent: '#0f766e', accentDark: '#5eead4', motif: 'rails' },
     title: 'RailSync',
     iconName: 'train',
     section: 'private',
@@ -177,6 +194,7 @@ export const privateProjects: Project[] = [
   },
   {
     id: 'koble',
+    theme: { accent: '#6d28d9', accentDark: '#c4b5fd', motif: 'network' },
     title: 'Koble',
     iconName: 'briefcase',
     section: 'private',
@@ -199,3 +217,8 @@ export const privateProjects: Project[] = [
 ];
 
 export const projects: Project[] = [...businessProjects, ...privateProjects];
+
+/** CSS-variabler for prosjektets tema (brukes med klassen «themed»). */
+export function themeStyle(project: Project): Record<string, string> {
+  return { '--accent-l': project.theme.accent, '--accent-d': project.theme.accentDark };
+}

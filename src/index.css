@@ -2399,3 +2399,61 @@ canvas {
   color: var(--text-primary);
   text-decoration-color: currentColor;
 }
+
+/* ---------- Tema per prosjekt (farge og mønster øverst på kortet) ---------- */
+.themed { --accent: var(--accent-l); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .themed { --accent: var(--accent-d); }
+}
+[data-theme='dark'] .themed { --accent: var(--accent-d); }
+
+.card-theme-band {
+  position: relative;
+  margin: -1.45rem -1.5rem 1.1rem;
+  padding: 1.1rem 1.5rem;
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent) 13%, var(--bg-surface)) 0%,
+      color-mix(in srgb, var(--accent) 4%, var(--bg-surface)) 70%);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 16%, var(--border-color));
+  overflow: hidden;
+}
+.companion-card .card-theme-band { margin: -1.4rem -1.5rem 1.1rem; }
+.card-theme-band > .card-top-row,
+.card-theme-band > .companion-top-row {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+}
+.theme-motif {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: min(62%, 240px);
+  color: var(--accent);
+  opacity: 0.32;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+.themed:hover .theme-motif { opacity: 0.5; transform: translateX(-4px); }
+
+.themed .project-icon-box {
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg-surface));
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border-color));
+  color: var(--accent);
+}
+.themed .card-info-btn {
+  background: color-mix(in srgb, var(--bg-surface) 80%, transparent);
+}
+.themed:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--border-color)); }
+.themed .card-link-text,
+.themed .companion-link { color: var(--accent); }
+.themed .card-category-meta > span:first-child { color: color-mix(in srgb, var(--accent) 70%, var(--text-muted)); }
+
+.card-inactive.themed .card-theme-band { filter: grayscale(0.6); }
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-motif { transition: none; }
+  .themed:hover .theme-motif { transform: none; }
+}

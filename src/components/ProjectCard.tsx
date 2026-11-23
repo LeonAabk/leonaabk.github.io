@@ -1,6 +1,7 @@
-import { Project } from '../data/projects';
+import { Project, themeStyle } from '../data/projects';
 import { ArrowUpRight, Info } from 'lucide-react';
 import { ProjectIcon } from './ProjectIcon';
+import { ThemeMotif } from './ThemeMotif';
 
 interface ProjectCardProps {
   project: Project;
@@ -24,12 +25,15 @@ export function ProjectCard({ project, onOpenDetails }: ProjectCardProps) {
   return (
     <a
       href={project.isActive ? project.url : '#'}
-      className={`card ${!project.isActive ? 'card-inactive' : ''}`}
+      className={`card themed ${!project.isActive ? 'card-inactive' : ''}`}
+      style={themeStyle(project)}
       onClick={handleCardClick}
       title={project.isActive ? `Åpne ${project.title}` : `${project.title} (${project.statusBadge || 'Satt på pause'})`}
       aria-disabled={!project.isActive}
     >
       <div>
+        <div className="card-theme-band">
+          <ThemeMotif motif={project.theme.motif} />
         <div className="card-top-row">
           <div className="project-icon-box" aria-hidden="true">
             <ProjectIcon name={project.iconName} size={18} />
@@ -46,6 +50,7 @@ export function ProjectCard({ project, onOpenDetails }: ProjectCardProps) {
               <Info size={15} strokeWidth={1.8} />
             </button>
           </div>
+        </div>
         </div>
 
         <div className="card-content">

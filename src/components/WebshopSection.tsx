@@ -1,6 +1,7 @@
 import { ArrowUpRight, Info, Check } from 'lucide-react';
-import { Project, businessProjects } from '../data/projects';
+import { Project, businessProjects, themeStyle } from '../data/projects';
 import { ProjectIcon } from './ProjectIcon';
+import { ThemeMotif } from './ThemeMotif';
 
 interface WebshopSectionProps {
   onOpenDetails: (project: Project) => void;
@@ -113,8 +114,10 @@ export function WebshopSection({ onOpenDetails }: WebshopSectionProps) {
       {/* Companion Business Cards (SmakSync + ReviewRedirect) */}
       <div className="companion-grid">
         {companionProjects.map((project) => (
-          <div key={project.id} className="companion-card">
+          <div key={project.id} className="companion-card themed" style={themeStyle(project)}>
             <div>
+              <div className="card-theme-band">
+              <ThemeMotif motif={project.theme.motif} />
               <div className="companion-top-row">
                 <div className="project-icon-box" aria-hidden="true">
                   <ProjectIcon name={project.iconName} size={18} />
@@ -142,6 +145,7 @@ export function WebshopSection({ onOpenDetails }: WebshopSectionProps) {
                     <Info size={15} strokeWidth={1.8} />
                   </button>
                 </div>
+              </div>
               </div>
 
               <h3 className="companion-title">{project.title}</h3>
